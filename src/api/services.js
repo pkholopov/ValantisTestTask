@@ -1,6 +1,5 @@
 import { $axios } from "./$axios"
 import { limit } from "../utils/constants"
-import { store } from "../store/store"
 
 export const getIds = async () => {
   const result = await $axios({
