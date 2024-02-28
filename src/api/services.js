@@ -1,3 +1,5 @@
+// функции для получения данных с сервера
+
 import { $axios } from "./$axios"
 import { limit } from "../utils/constants"
 

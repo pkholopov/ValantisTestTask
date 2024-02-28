@@ -6,29 +6,39 @@ import { brandSelect } from "./src/components/BrandsSelect/BrandsSelect"
 import { pagination } from "./src/components/Pagination/Pagination"
 import "./style.css"
 
+// вызываем действие, в которое передаём функцию отрисовки таблицы.
+// аргументы функции отрисовки таблицы являются свойствами проксированного объекта
+// благодаря этому функция отрисовки будет вызываться всякий раз при изменении значений переменных, выступающих в качестве аргументов
+// action определена в файле src/utils/reactivity.js
 action(() => {
   tableBody(store.items, store.pending)
 })
 
+// аналогично для отрисовки пагинации
 action(() => {
   pagination(store.ids.length)
 })
 
+// аналогично для отрисовки селекта брендов
 action(() => {
   brandSelect(store.brands)
 })
 
 let ids
 
+// инициализирующая функция, загружающая данные
 const init = async () => {
   store.ids = await getIds()
 
+  // получение данных по id. Коллбэк экшна становится зависим от значения переменной ids
+  // и будет срабатывать каждый раз, когда меняются id
   action(async() => {
     ids = store.ids
     store.items = await getItems(ids, 1)
     store.pending = false
   })
 
+  // так же получаем данные по id, но в данном случае работа колбэка зависит от изменения значения текущей страницы
   action(async() => {
     if(store.currentPage !== 1) {
       store.items = await getItems(ids, store.currentPage)
@@ -43,6 +53,8 @@ window.addEventListener('DOMContentLoaded', async () => {
   await init()
 })
 
+
+// обработчики событий на формах фильтрации
 const productSearchForm = document.querySelector('[data-product-search-form]')
 productSearchForm.addEventListener('submit', async (event) => {
   event.preventDefault()
