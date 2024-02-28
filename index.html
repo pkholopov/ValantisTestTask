@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.png" type="image/png">
+    <title>Valantis Test Task</title>
+  </head>
+  <body>
+    <div class="main flex w-4/5 mx-auto pt-8">
+
+
+      <div class="filters w-[200px] h-fit sticky -top-8">
+        <div class="filters__product flex flex-col border p-2 rounded mb-2 mt-10">
+          <form data-product-search-form class="flex flex-col">
+            <input name="product" type="text" placeholder="Фильтр по названию" class="p-1 mb-2 border rounded outline-indigo-200">
+            <button class="h-8 bg-indigo-200 px-2 py-1 m-1 rounded hover:bg-indigo-300">Поиск</button>
+          </form>
+        </div>
+
+        <div class="filters__brand border p-2 rounded mb-2">
+          <label data-brands-select class="flex flex-col">
+            <select name="brand" class="p-1 border rounded outline-indigo-200">
+              <option value="" selected disabled>Поиск по бренду</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="filters__price border p-2 rounded mb-2">
+          <form data-price-search-form class="flex flex-col">
+            <input type="number" name="price" placeholder="Фильтр по цене" class="p-1 mb-2 border rounded outline-indigo-200">
+            <button class="h-8 bg-indigo-200 px-2 py-1 m-1 rounded hover:bg-indigo-300">Поиск</button>
+          </form>
+        </div>
+
+        <div class="filters__reset border p-2 rounded mb-2 flex justify-center bg-red-50">
+          <button data-reset class="h-8 w-full bg-red-100 px-2 py-1 m-1 rounded hover:bg-red-200">Сброс</button>
+        </div>
+      </div>
+
+
+      <div class="data w-full flex flex-col ml-4">
+        <div data-pagination class="data__pagination flex flex-row self-end">
+          <button disabled class="h-8 bg-indigo-200 px-2 py-1 m-1 rounded hover:bg-indigo-300 disabled:opacity-50 disabled:hover:bg-indigo-200 disabled:cursor-not-allowed">&lt; Назад</button>
+          <div class="self-center px-4 text-sm"><input type="number" min="1" max="1" value="1" class="text-right w-12 p-1 border rounded outline-indigo-200"> страница. Всего страниц: ???</div>
+          <button disabled class="h-8 bg-indigo-200 px-2 py-1 m-1 rounded hover:bg-indigo-300 disabled:opacity-50 disabled:hover:bg-indigo-200 disabled:cursor-not-allowed">Вперед &gt;</button>
+        </div>
+
+        <div class="data__table w-full">
+          <table class="w-full border border-collapse">
+            <thead class="h-16 bg-white/50 backdrop-blur-[6px] border-b sticky top-0">
+              <tr>
+                <th></th>
+                <th>ID</th>
+                <th>Название</th>
+                <th>Бренд</th>
+                <th>Цена</th>
+              </tr>
+            </thead>
+            <tbody data-tbody class="divide-y">
+              <tr class="divide-x bg-white even:bg-gray-200 hover:bg-indigo-200 *:p-2">
+                <td class="text-center">#</td>
+                <td class="text-center">id</td>
+                <td class="font-semibold">product</td>
+                <td>brand</td>
+                <td class="text-right">price</td>
+              </tr>
+              <tr><td colspan="5" class="h-32 text-center"><p>Что-то пошло не так &#129300; Вероятно, JavaScript отключен</p> </td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <button data-top-button class="hidden transition-all fixed bottom-8 right-16 h-16 w-16 rounded-full bg-indigo-200 hover:bg-indigo-300 justify-center items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6 text-white">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
+        </svg>
+      </button>
+
+
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
