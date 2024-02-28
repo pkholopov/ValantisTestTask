@@ -78,6 +78,7 @@ resetButton.addEventListener('click', async () => {
   productSearchForm.product.value = ''
   priceSearchForm.price.value = ''
   document.querySelector('[data-brands-select] select').options[0].selected = true
+  store.currentPage = 1
   store.pending = true
   store.ids = await getIds()
 })
